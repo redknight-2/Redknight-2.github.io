@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Daily Quote Generator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #fff;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 1rem;
+    }
+
+    .container {
+      max-width: 600px;
+      text-align: center;
+      background: #1e1e1e;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .quote {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease-in-out;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin: 0 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="quote" id="quote">Click the button to get a quote</div>
+    <div>
+      <button onclick="generateQuote()">New Quote</button>
+      <button onclick="copyQuote()">Copy</button>
+    </div>
+    <div class="footer">Built by You – Free & Simple</div>
+  </div>
+
+  <script>
+    const quotes = [
+      "Push yourself, because no one else is going to do it for you.",
+      "Success doesn’t come to you. You go to it.",
+      "Do it now. Sometimes ‘later’ becomes ‘never’.",
+      "Don’t watch the clock; do what it does. Keep going.",
+      "Small steps every day lead to big results.",
+      "Discipline is the bridge between goals and accomplishment.",
+      "Success is not for the lazy.",
+      "You don’t need to be perfect, just consistent.",
+      "Your future is created by what you do today, not tomorrow.",
+      "You are capable of more than you know."
+    ];
+
+    function generateQuote() {
+      const index = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quote").innerText = quotes[index];
+    }
+
+    function copyQuote() {
+      const text = document.getElementById("quote").innerText;
+      navigator.clipboard.writeText(text)
+        .then(() => alert("Quote copied to clipboard!"))
+        .catch(() => alert("Failed to copy."));
+    }
+
+    // Auto-generate quote on page load
+    window.onload = generateQuote;
+  </script>
+</body>
+</html> 
